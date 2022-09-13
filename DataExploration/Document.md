@@ -1,11 +1,9 @@
 # Data Exploration
 ## C++ Output
-<br>
-![](cppoutput.png)
+<br>![](cppoutput.png)
 <br>
 ## ROutput
-<br>
-![](routput.png)
+<br>![](routput.png)
 <br>
 + b. R's process of gathering data from csv files, compared to C++ is smoother. Data is automatically parsed into separated vectors and common statistical functions are already implemented.
 <br> 
