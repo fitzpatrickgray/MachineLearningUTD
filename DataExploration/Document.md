@@ -1,5 +1,5 @@
 # Data Exploration
-C++ Output          
+## C++ Output <br>
 ![](cppoutput.png)<br>
-ROutput
-![](routput.png)
+## ROutput<br>
+![](routput.png) <br>
