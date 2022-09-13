@@ -11,6 +11,12 @@ void print_stats(vector<double> vec);
 double covar(vector<double> vecX, vector<double> vecY);
 double cor(vector<double> vecX, vector<double> vecY);
 
+class Range
+{
+    public:
+    double min = 0;
+    double max = 0;
+};
 
 int main()
 {
@@ -97,24 +103,26 @@ double median(vector<double> vec)
     return vec.at( floor((vec.size()/2.0)) );
 }
 
-double range(vector<double> vec)
+Range range(vector<double> vec)
 {
-    double min, max, temp = 0;
-
+    Range r;
+    r.min = vec.at(0);
+    r.max = vec.at(0);
+    double temp = 0;
     for(int i = 0; i < vec.size(); i++)
     {
         temp = vec.at(i);
-        if(temp > max)
+        if(temp > r.max)
         {
-            max = temp;
+            r.max = temp;
         }
-        else if(temp < max)
+        else if(temp < r.min)
         {
-            min = temp;
+            r.min = temp;
         }
     }
 
-    return (max - min);
+    return r;
 }
 
 void print_stats(vector<double> vec)
@@ -122,24 +130,26 @@ void print_stats(vector<double> vec)
     cout << "\n Sum: " << sum(vec);
     cout << "\n Mean: " << mean(vec);
     cout << "\n Median: " << median(vec);
-    cout << "\n Range: " << range(vec) << endl;
+
+    Range r = range(vec);
+    cout << "\n Range: " << r.min << ", " << r.max << endl;
+
+
 }
 
 double stdDev(vector<double> vec)
 {
     double mew = mean(vec);
-    
-    //cout << "\n mean: " << mew << endl;
     double sum = 0;
     double stddev = 0;
+
     for(int i = 0; i < vec.size(); i++)
     {
-        //cout << "\n sigma add: " << sigma << endl;
         sum += pow( (vec.at(i) - mew) , 2);
     }
-    //cout << "\n sigma: " << sigma << endl;
+
     stddev = sqrt( sum / (double)(vec.size()) );
-    //cout << "\n stdDev: " << stddev << endl;
+
     return stddev;
 }
 
@@ -154,6 +164,7 @@ double covar(vector<double> vecX, vector<double> vecY)
     double mewX = mean(vecX);
     double mewY = mean(vecY);
     double sum = 0;
+
     for(int i = 0; i < size; i++)
     {
         sum += (vecX.at(i) - mewX) * (vecY.at(i) - mewY);
