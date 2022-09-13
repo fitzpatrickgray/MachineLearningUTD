@@ -1,3 +1,3 @@
 # Data Exploration
-![](cppoutput.png)<br>
-![](routput.png)
+C++ Output          ROutput<br>
+![](cppoutput.png)  ![](routput.png)
