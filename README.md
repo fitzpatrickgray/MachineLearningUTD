@@ -10,5 +10,5 @@ Read the -> [Documentation](DataExploration/Document.md)<br>
 Modeling of classification and linear regression algorithms.<br>
 Visit the Linear Regression -> [Code](LinearModels/AccelerometerLinReg.Rmd)<br>
 Read the -> [Documentation](LinearModels/LinearRegression.pdf)<br>
-Credit to Michael Stinnett for his classification documentation.
+Credit to Michael Stinnett for his classification documentation.<br>
 Read the -> [Documentation](LinearModels/Classification.pdf)
