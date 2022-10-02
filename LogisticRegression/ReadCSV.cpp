@@ -1,10 +1,9 @@
 #include "ReadCSV.h"
 
-
 ReadCSV::ReadCSV(string file)
 {
     string heading;
-    inFS.open(file);
+    inFS.open("titanic_project.csv");
 
     if(!inFS.is_open())
     {
@@ -32,7 +31,7 @@ vector<double> ReadCSV::splitData(string inS, string delimeter)
     {
         if(inS.substr(i, 1).compare(delimeter) == 0)
         {
-            spline.push_back(stof(inS.substr(start, i)));
+            spline.push_back(atof(inS.substr(start, i).c_str()));
             start = i + 1;
         }
     }
@@ -41,15 +40,11 @@ vector<double> ReadCSV::splitData(string inS, string delimeter)
 
 void ReadCSV::printData()
 {
-    list<vector<double>>::iterator iterL;
-    for(iterL = listofvectors.begin(); iterL != listofvectors.end(); ++iterL)
-    {
+    // for(list<vector<double> >::iterator l = listofvectors.begin(); l != listofvectors.end(); ++l)
+    // {
+    //     for(vector<double>::iterator v = l->begin(); v != l->end(); v++)
+    //     {
 
-        vector<double>::iterator iterV;
-        for(iterV = (*iterL).begin(); iterV != (*iterL).end(); ++iterV)
-        {
-            cout << *iterV;
-        }
-        cout << endl;
-    }
+    //     }
+    // }
 }

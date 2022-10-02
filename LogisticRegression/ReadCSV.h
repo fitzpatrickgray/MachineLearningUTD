@@ -13,6 +13,5 @@ class ReadCSV
     private:
         ifstream inFS;
         string line;
-        list<vector<double>> listofvectors;
-        vector<double> sampleV;
+        list<vector<double> > listofvectors;
 };
