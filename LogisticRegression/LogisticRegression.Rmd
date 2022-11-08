@@ -1,0 +1,24 @@
+---
+title: "R Notebook"
+output: html_notebook
+--- 
+
+```{r}
+library(caret)
+library(ggplot2)
+library(lattice)
+titanic <- read.csv("titanic_project.csv")
+
+set.seed(1234)
+i <- sample(1:nrow(titanic), 0.76*nrow(titanic), replace = FALSE)
+train <- titanic[i,]
+test <- titanic[-i,]
+glm1 <- glm(survived~sex, data=train, family = binomial)
+
+probs <- predict(glm1, newdata = test, type="response")
+pred <- ifelse(probs>0.5, 1, 0)
+acc <- mean(pred==test$survived)
+print(paste("accuracy = ", acc))
+
+confusionMatrix(as.factor(pred), reference=as.factor(test$survived))
+```

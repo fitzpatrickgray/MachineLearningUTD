@@ -1,0 +1,95 @@
+---
+title: "Ensemble Methods"
+author: "Spencer Gray"
+date: "2022-10-23"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+
+## Data Setup
+
+```{r}
+library(dplyr)
+set.seed(1234)
+
+star <- read.csv("star_classification.csv")
+
+star$class[which(star$class=="STAR")] <- 0
+star$class[which(star$class=="GALAXY")] <- 1
+star$class[which(star$class=="QSO")] <- 2
+star$class <- as.factor(star$class)
+
+train <- sample_n(star, 12000)
+test <- sample_n(star, 3000)
+
+
+dim(star)
+head(star)
+```
+
+## Random Forest
+
+Random Forest has a relatively fast training time compared to our SVM model and actually performs 1% better at an accuracy of 88.3%.
+
+```{r}
+library(mltools)
+library(randomForest)
+set.seed
+
+start_time <- Sys.time()
+rf <- randomForest(class~alpha + delta + u + g + r + i + z, data=train, importance=TRUE)
+end_time <- Sys.time()
+
+pred <- predict(rf, newdata=test, type="response")
+acc <- mean(pred==test$class)
+print(paste("accuracy=", acc))
+print(paste("time=",end_time - start_time," seconds"))
+```
+
+## XGBoost
+
+```{r}
+library(xgboost)
+set.seed(1234)
+
+train_lb <- ifelse(train$class==1, 1, 0)
+train_mt <- data.matrix(train[, c(2, 3, 4, 5, 6, 7, 8)])
+
+start_time <- Sys.time()
+model <- xgboost(data=train_mt, label=train_lb, nrounds=100, objective='binary:logistic')
+end_time <- Sys.time()
+
+test_lb <- ifelse(test$class==1, 1, 0)
+test_mt <- data.matrix(test[, c(2, 3, 4, 5, 6, 7, 8)])
+
+probs<- predict(model, test_mt)
+pred <- ifelse(probs>0.5, 1, 0)
+
+acc <- mean(pred==test_lb)
+print(paste("accuracy=", acc))
+print(paste("time=",end_time-start_time," seconds"))
+```
+
+## Super Learner
+
+```{r}
+library(SuperLearner)
+set.seed(1234)
+
+start_time <- Sys.time()
+model <- SuperLearner(train_lb, train[, c(2, 3, 4, 5, 6, 7, 8)], family=binomial(), SL.library=list("SL.ranger", "SL.ksvm", "SL.ipredbagg"))
+model
+end_time <- Sys.time()
+
+probs <- predict.SuperLearner(model, newdata=test[, c(2, 3, 4, 5, 6, 7, 8)])
+pred <- ifelse(probs$pred>0, 1, 0)
+acc <- mean(pred==test_lb)
+print(paste("accuracy=",acc))
+print(paste("time=",end_time-start_time," minutes"))
+```
+
+## Conclusion
+
+Random Forest algorithm was quite fast in its training and performed relatively well. Especially considering the time it took to train the SVM model and how it performs worse. XGBoost took a fair while longer but ended on a new highscore for accuracy at 91.2%. A prime example of a model that both takes a long time to run and performs poorly is the super learner, taking over 3 minutes with an accuracy of 60%.
