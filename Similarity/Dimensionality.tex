@@ -1,0 +1,351 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Dimensionality},
+  pdfauthor={Spencer Gray},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Dimensionality}
+\author{Spencer Gray}
+\date{2022-10-08}
+
+\begin{document}
+\maketitle
+
+\hypertarget{data-setup}{%
+\subsection{Data Setup}\label{data-setup}}
+
+Cleaning up our data, removing all NAs and setting to 0 to assist with
+our kNN model in the future.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(caret)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: ggplot2
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: lattice
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{aus }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"weatherAUS.csv"}\NormalTok{)}
+
+\NormalTok{aus }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(aus,RainTomorrow  }\SpecialCharTok{!=} \StringTok{"NA"}\NormalTok{)}
+
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{13}\NormalTok{, }\DecValTok{14}\NormalTok{, }\DecValTok{15}\NormalTok{, }\DecValTok{16}\NormalTok{, }\DecValTok{17}\NormalTok{, }\DecValTok{20}\NormalTok{, }\DecValTok{21}\NormalTok{))}
+\NormalTok{\{}
+\NormalTok{  aus[}\FunctionTok{is.na}\NormalTok{(aus[,i]), i] }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(aus[,i], }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{\}}
+
+
+\FunctionTok{dim}\NormalTok{(aus)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 142193     23
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(aus)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         Date Location MinTemp MaxTemp Rainfall Evaporation Sunshine WindGustDir
+## 1 2008-12-01   Albury    13.4    22.9      0.6          NA       NA           W
+## 2 2008-12-02   Albury     7.4    25.1      0.0          NA       NA         WNW
+## 3 2008-12-03   Albury    12.9    25.7      0.0          NA       NA         WSW
+## 4 2008-12-04   Albury     9.2    28.0      0.0          NA       NA          NE
+## 5 2008-12-05   Albury    17.5    32.3      1.0          NA       NA           W
+## 6 2008-12-06   Albury    14.6    29.7      0.2          NA       NA         WNW
+##   WindGustSpeed WindDir9am WindDir3pm WindSpeed9am WindSpeed3pm Humidity9am
+## 1            44          W        WNW           20           24          71
+## 2            44        NNW        WSW            4           22          44
+## 3            46          W        WSW           19           26          38
+## 4            24         SE          E           11            9          45
+## 5            41        ENE         NW            7           20          82
+## 6            56          W          W           19           24          55
+##   Humidity3pm Pressure9am Pressure3pm Cloud9am Cloud3pm Temp9am Temp3pm
+## 1          22      1007.7      1007.1        8       NA    16.9    21.8
+## 2          25      1010.6      1007.8       NA       NA    17.2    24.3
+## 3          30      1007.6      1008.7       NA        2    21.0    23.2
+## 4          16      1017.6      1012.8       NA       NA    18.1    26.5
+## 5          33      1010.8      1006.0        7        8    17.8    29.7
+## 6          23      1009.2      1005.4       NA       NA    20.6    28.9
+##   RainToday RainTomorrow
+## 1        No           No
+## 2        No           No
+## 3        No           No
+## 4        No           No
+## 5        No           No
+## 6        No           No
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{i }\OtherTok{\textless{}{-}} \FunctionTok{sample}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\FunctionTok{nrow}\NormalTok{(aus), }\FloatTok{0.8} \SpecialCharTok{*} \FunctionTok{nrow}\NormalTok{(aus), }\AttributeTok{replace =} \ConstantTok{FALSE}\NormalTok{)}
+
+\NormalTok{train }\OtherTok{\textless{}{-}}\NormalTok{ aus[i,]}
+\NormalTok{test }\OtherTok{\textless{}{-}}\NormalTok{ aus[}\SpecialCharTok{{-}}\NormalTok{i,]}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{data-representation}{%
+\subsection{Data Representation}\label{data-representation}}
+
+Selecting relatively stable and numerically recorded variables
+(quantitative) to use our PCA model on. Predicting rain tomorrow in
+Column 23. MinTemp -\textgreater{} column 3 MaxTemp -\textgreater{}
+column 4 Rainfall -\textgreater{} column 5 WindGustSpeed -\textgreater{}
+column 9 WinSpeed9am -\textgreater{} column 12 WinSpeed3pm
+-\textgreater{} column 13 Humidity9am -\textgreater{} column 14
+Humidity3pm -\textgreater{} column 15 Pressure9am -\textgreater{} column
+16 Pressure3pm -\textgreater{} column 17 Temp9am -\textgreater{} column
+20 Temp3pm -\textgreater{} column 21
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{1234}\NormalTok{)}
+\NormalTok{pcaModel }\OtherTok{\textless{}{-}} \FunctionTok{preProcess}\NormalTok{(train[,}\FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{13}\NormalTok{, }\DecValTok{14}\NormalTok{, }\DecValTok{15}\NormalTok{, }\DecValTok{16}\NormalTok{, }\DecValTok{17}\NormalTok{, }\DecValTok{20}\NormalTok{, }\DecValTok{21}\NormalTok{, }\DecValTok{23}\NormalTok{)], }\AttributeTok{method =} \FunctionTok{c}\NormalTok{(}\StringTok{"center"}\NormalTok{, }\StringTok{"scale"}\NormalTok{, }\StringTok{"pca"}\NormalTok{))}
+\NormalTok{pcaModel}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Created from 113754 samples and 13 variables
+## 
+## Pre-processing:
+##   - centered (12)
+##   - ignored (1)
+##   - principal component signal extraction (12)
+##   - scaled (12)
+## 
+## PCA needed 7 components to capture 95 percent of the variance
+\end{verbatim}
+
+\hypertarget{pca-model-setup}{%
+\subsection{PCA Model Setup}\label{pca-model-setup}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{trainPCA }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(pcaModel, train[, }\FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{13}\NormalTok{, }\DecValTok{14}\NormalTok{, }\DecValTok{15}\NormalTok{, }\DecValTok{16}\NormalTok{, }\DecValTok{17}\NormalTok{, }\DecValTok{20}\NormalTok{, }\DecValTok{21}\NormalTok{, }\DecValTok{23}\NormalTok{)])}
+\NormalTok{testPCA }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(pcaModel,  test[, }\FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{13}\NormalTok{, }\DecValTok{14}\NormalTok{, }\DecValTok{15}\NormalTok{, }\DecValTok{16}\NormalTok{, }\DecValTok{17}\NormalTok{, }\DecValTok{20}\NormalTok{, }\DecValTok{21}\NormalTok{, }\DecValTok{23}\NormalTok{)])}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{pca-model-accuracy}{%
+\subsection{PCA Model Accuracy}\label{pca-model-accuracy}}
+
+Graphing data of different principal components against one another.
+Training a knn model with PCA predict rain tomorrow based on variants of
+specific weather characteristics including: temperature, humidity, and
+wind.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(class)}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{1234}\NormalTok{)}
+
+\NormalTok{trainDF }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(trainPCA}\SpecialCharTok{$}\NormalTok{PC1, trainPCA}\SpecialCharTok{$}\NormalTok{PC2, trainPCA}\SpecialCharTok{$}\NormalTok{PC3, trainPCA}\SpecialCharTok{$}\NormalTok{PC4, trainPCA}\SpecialCharTok{$}\NormalTok{PC5, trainPCA}\SpecialCharTok{$}\NormalTok{PC6, trainPCA}\SpecialCharTok{$}\NormalTok{PC7, train}\SpecialCharTok{$}\NormalTok{RainTomorrow)}
+\NormalTok{testDF }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(testPCA}\SpecialCharTok{$}\NormalTok{PC1, testPCA}\SpecialCharTok{$}\NormalTok{PC2, testPCA}\SpecialCharTok{$}\NormalTok{PC3, testPCA}\SpecialCharTok{$}\NormalTok{PC4, testPCA}\SpecialCharTok{$}\NormalTok{PC5, testPCA}\SpecialCharTok{$}\NormalTok{PC6, testPCA}\SpecialCharTok{$}\NormalTok{PC7, test}\SpecialCharTok{$}\NormalTok{RainTomorrow)}
+
+
+
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow=}\FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+\FunctionTok{plot}\NormalTok{(trainPCA}\SpecialCharTok{$}\NormalTok{PC1, trainPCA}\SpecialCharTok{$}\NormalTok{PC2)}
+\FunctionTok{plot}\NormalTok{(trainPCA}\SpecialCharTok{$}\NormalTok{PC2, trainPCA}\SpecialCharTok{$}\NormalTok{PC3)}
+\FunctionTok{plot}\NormalTok{(trainPCA}\SpecialCharTok{$}\NormalTok{PC3, trainPCA}\SpecialCharTok{$}\NormalTok{PC4)}
+\FunctionTok{plot}\NormalTok{(trainPCA}\SpecialCharTok{$}\NormalTok{PC4, trainPCA}\SpecialCharTok{$}\NormalTok{PC5)}
+\FunctionTok{plot}\NormalTok{(trainPCA}\SpecialCharTok{$}\NormalTok{PC5, trainPCA}\SpecialCharTok{$}\NormalTok{PC6)}
+\FunctionTok{plot}\NormalTok{(trainPCA}\SpecialCharTok{$}\NormalTok{PC6, trainPCA}\SpecialCharTok{$}\NormalTok{PC7)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Dimensionality_files/figure-latex/unnamed-chunk-3-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{start\_time }\OtherTok{\textless{}{-}} \FunctionTok{Sys.time}\NormalTok{()}
+\NormalTok{pred\_reduced }\OtherTok{\textless{}{-}} \FunctionTok{knn}\NormalTok{(trainDF[,}\DecValTok{1}\SpecialCharTok{:}\DecValTok{7}\NormalTok{], testDF[,}\DecValTok{1}\SpecialCharTok{:}\DecValTok{7}\NormalTok{], trainDF[,}\DecValTok{8}\NormalTok{], }\AttributeTok{k =} \DecValTok{6}\NormalTok{)}
+
+\FunctionTok{mean}\NormalTok{(pred\_reduced }\SpecialCharTok{==}\NormalTok{ test}\SpecialCharTok{$}\NormalTok{RainTomorrow)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.8235522
+\end{verbatim}
+
+\hypertarget{regular-model-accuracy}{%
+\subsection{Regular Model Accuracy}\label{regular-model-accuracy}}
+
+Training a kNN model based on all the previous parameters but
+unmodified.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(class)}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{1234}\NormalTok{)}
+
+\NormalTok{trainDF\_real }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(train}\SpecialCharTok{$}\NormalTok{MinTemp, train}\SpecialCharTok{$}\NormalTok{MaxTemp, train}\SpecialCharTok{$}\NormalTok{WindGustSpeed, train}\SpecialCharTok{$}\NormalTok{WindSpeed9am, train}\SpecialCharTok{$}\NormalTok{WindSpeed3pm, train}\SpecialCharTok{$}\NormalTok{Humidity9am, train}\SpecialCharTok{$}\NormalTok{Humidity3pm, train}\SpecialCharTok{$}\NormalTok{Pressure9am, train}\SpecialCharTok{$}\NormalTok{Pressure3pm, train}\SpecialCharTok{$}\NormalTok{Temp9am, train}\SpecialCharTok{$}\NormalTok{Temp3pm, train}\SpecialCharTok{$}\NormalTok{Rainfall, train}\SpecialCharTok{$}\NormalTok{RainTomorrow)}
+
+\NormalTok{testDF\_real }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(test}\SpecialCharTok{$}\NormalTok{MinTemp, test}\SpecialCharTok{$}\NormalTok{MaxTemp, test}\SpecialCharTok{$}\NormalTok{WindGustSpeed, test}\SpecialCharTok{$}\NormalTok{WindSpeed9am, test}\SpecialCharTok{$}\NormalTok{WindSpeed3pm, test}\SpecialCharTok{$}\NormalTok{Humidity9am, test}\SpecialCharTok{$}\NormalTok{Humidity3pm, test}\SpecialCharTok{$}\NormalTok{Pressure9am, test}\SpecialCharTok{$}\NormalTok{Pressure3pm, test}\SpecialCharTok{$}\NormalTok{Temp9am, test}\SpecialCharTok{$}\NormalTok{Temp3pm, test}\SpecialCharTok{$}\NormalTok{Rainfall, test}\SpecialCharTok{$}\NormalTok{RainTomorrow)}
+
+
+\NormalTok{pred }\OtherTok{\textless{}{-}} \FunctionTok{knn}\NormalTok{(trainDF\_real[,}\DecValTok{1}\SpecialCharTok{:}\DecValTok{12}\NormalTok{], testDF\_real[,}\DecValTok{1}\SpecialCharTok{:}\DecValTok{12}\NormalTok{], trainDF\_real[,}\DecValTok{13}\NormalTok{], }\AttributeTok{k =} \DecValTok{10}\NormalTok{)}
+
+\FunctionTok{mean}\NormalTok{(pred}\SpecialCharTok{==}\NormalTok{test}\SpecialCharTok{$}\NormalTok{RainTomorrow)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.8400436
+\end{verbatim}
+
+\hypertarget{lda-model-setup-and-accuracy}{%
+\subsection{LDA Model Setup and
+Accuracy}\label{lda-model-setup-and-accuracy}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(MASS)}
+\NormalTok{ldaModel }\OtherTok{\textless{}{-}} \FunctionTok{lda}\NormalTok{(RainTomorrow}\SpecialCharTok{\textasciitilde{}}\NormalTok{MinTemp }\SpecialCharTok{+}\NormalTok{ MaxTemp }\SpecialCharTok{+}\NormalTok{ WindGustSpeed }\SpecialCharTok{+}\NormalTok{ WindSpeed9am }\SpecialCharTok{+}\NormalTok{ WindSpeed3pm }\SpecialCharTok{+}\NormalTok{ Humidity9am }\SpecialCharTok{+}\NormalTok{ Humidity3pm }\SpecialCharTok{+}\NormalTok{ Pressure9am }\SpecialCharTok{+}\NormalTok{ Pressure3pm }\SpecialCharTok{+}\NormalTok{ Temp9am }\SpecialCharTok{+}\NormalTok{ Temp3pm }\SpecialCharTok{+}\NormalTok{ Rainfall, }\AttributeTok{data =}\NormalTok{ train)}
+\NormalTok{ldaModel}\SpecialCharTok{$}\NormalTok{means}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      MinTemp  MaxTemp WindGustSpeed WindSpeed9am WindSpeed3pm Humidity9am
+## No  11.89885 23.84650      38.42135     13.56610     18.24259    66.23313
+## Yes 13.16511 21.08371      45.52009     15.52495     20.04153    77.80854
+##     Humidity3pm Pressure9am Pressure3pm  Temp9am  Temp3pm Rainfall
+## No     46.61851    1018.499    1016.025 17.08313 22.40268 1.276776
+## Yes    68.34933    1014.724    1012.601 16.66880 19.22103 6.066671
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lda\_pred }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(ldaModel, }\AttributeTok{newdata=}\NormalTok{test, }\AttributeTok{type=}\StringTok{"class"}\NormalTok{)}
+\FunctionTok{mean}\NormalTok{(lda\_pred}\SpecialCharTok{$}\NormalTok{class}\SpecialCharTok{==}\NormalTok{test}\SpecialCharTok{$}\NormalTok{RainTomorrow)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.8378283
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(lda\_pred}\SpecialCharTok{$}\NormalTok{x[,}\DecValTok{1}\NormalTok{], lda\_pred}\SpecialCharTok{$}\NormalTok{posterior[,}\DecValTok{1}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Dimensionality_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+\end{document}

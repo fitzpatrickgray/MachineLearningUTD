@@ -1,0 +1,121 @@
+---
+title: "Dimensionality"
+author: "Spencer Gray"
+date: "2022-10-08"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+## Data Setup
+
+Cleaning up our data, removing all NAs and setting to 0 to assist with our kNN model in the future.
+
+```{r setup}
+library(caret)
+
+aus <- read.csv("weatherAUS.csv")
+
+aus <- subset(aus,RainTomorrow  != "NA")
+
+for(i in c(3, 4, 5, 9, 12, 13, 14, 15, 16, 17, 20, 21))
+{
+  aus[is.na(aus[,i]), i] <- mean(aus[,i], na.rm = TRUE)
+}
+
+
+dim(aus)
+head(aus)
+
+i <- sample(1:nrow(aus), 0.8 * nrow(aus), replace = FALSE)
+
+train <- aus[i,]
+test <- aus[-i,]
+```
+
+## Data Representation
+
+Selecting relatively stable and numerically recorded variables (quantitative) to use our PCA model on. Predicting rain tomorrow in Column 23.
+MinTemp       -> column 3
+MaxTemp       -> column 4
+Rainfall      -> column 5
+WindGustSpeed -> column 9
+WinSpeed9am   -> column 12
+WinSpeed3pm   -> column 13
+Humidity9am   -> column 14
+Humidity3pm   -> column 15
+Pressure9am   -> column 16
+Pressure3pm   -> column 17
+Temp9am       -> column 20
+Temp3pm       -> column 21
+
+```{r}
+set.seed(1234)
+pcaModel <- preProcess(train[,c(3, 4, 5, 9, 12, 13, 14, 15, 16, 17, 20, 21, 23)], method = c("center", "scale", "pca"))
+pcaModel
+```
+
+## PCA Model Setup
+
+```{r}
+trainPCA <- predict(pcaModel, train[, c(3, 4, 5, 9, 12, 13, 14, 15, 16, 17, 20, 21, 23)])
+testPCA <- predict(pcaModel,  test[, c(3, 4, 5, 9, 12, 13, 14, 15, 16, 17, 20, 21, 23)])
+```
+
+## PCA Model Accuracy
+
+Graphing data of different principal components against one another. Training a knn model with PCA predict rain tomorrow based on variants of specific weather characteristics including: temperature, humidity, and wind.
+
+```{r}
+library(class)
+set.seed(1234)
+
+trainDF <- data.frame(trainPCA$PC1, trainPCA$PC2, trainPCA$PC3, trainPCA$PC4, trainPCA$PC5, trainPCA$PC6, trainPCA$PC7, train$RainTomorrow)
+testDF <- data.frame(testPCA$PC1, testPCA$PC2, testPCA$PC3, testPCA$PC4, testPCA$PC5, testPCA$PC6, testPCA$PC7, test$RainTomorrow)
+
+
+
+par(mfrow=c(3,2))
+plot(trainPCA$PC1, trainPCA$PC2)
+plot(trainPCA$PC2, trainPCA$PC3)
+plot(trainPCA$PC3, trainPCA$PC4)
+plot(trainPCA$PC4, trainPCA$PC5)
+plot(trainPCA$PC5, trainPCA$PC6)
+plot(trainPCA$PC6, trainPCA$PC7)
+
+start_time <- Sys.time()
+pred_reduced <- knn(trainDF[,1:7], testDF[,1:7], trainDF[,8], k = 6)
+
+mean(pred_reduced == test$RainTomorrow)
+```
+
+## Regular Model Accuracy
+
+Training a kNN model based on all the previous parameters but unmodified.
+
+```{r}
+library(class)
+set.seed(1234)
+
+trainDF_real <- data.frame(train$MinTemp, train$MaxTemp, train$WindGustSpeed, train$WindSpeed9am, train$WindSpeed3pm, train$Humidity9am, train$Humidity3pm, train$Pressure9am, train$Pressure3pm, train$Temp9am, train$Temp3pm, train$Rainfall, train$RainTomorrow)
+
+testDF_real <- data.frame(test$MinTemp, test$MaxTemp, test$WindGustSpeed, test$WindSpeed9am, test$WindSpeed3pm, test$Humidity9am, test$Humidity3pm, test$Pressure9am, test$Pressure3pm, test$Temp9am, test$Temp3pm, test$Rainfall, test$RainTomorrow)
+
+
+pred <- knn(trainDF_real[,1:12], testDF_real[,1:12], trainDF_real[,13], k = 10)
+
+mean(pred==test$RainTomorrow)
+```
+
+## LDA Model Setup and Accuracy
+
+```{r}
+library(MASS)
+ldaModel <- lda(RainTomorrow~MinTemp + MaxTemp + WindGustSpeed + WindSpeed9am + WindSpeed3pm + Humidity9am + Humidity3pm + Pressure9am + Pressure3pm + Temp9am + Temp3pm + Rainfall, data = train)
+ldaModel$means
+
+
+lda_pred <- predict(ldaModel, newdata=test, type="class")
+mean(lda_pred$class==test$RainTomorrow)
+plot(lda_pred$x[,1], lda_pred$posterior[,1])
+```
